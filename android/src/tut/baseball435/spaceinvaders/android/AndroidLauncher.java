@@ -14,11 +14,6 @@ public class AndroidLauncher extends AndroidApplication
 		super.onCreate( savedInstanceState );
 		AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
 		
-		// For battery saving
-		cfg.useAccelerometer = false;
-		cfg.useCompass = false;
-		// --
-		
 		initialize( new MainGame(), cfg );
 	}
 }

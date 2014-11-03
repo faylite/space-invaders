@@ -20,9 +20,9 @@ public class Player extends Entity
 	{
 		pos.add( direction );
 		
-		if ( Gdx.input.isKeyPressed( Keys.A ) ) {
+		if ( Gdx.input.isKeyPressed( Keys.A ) || (Gdx.input.getAccelerometerX() <= 0 )) {
 			setDirection( -300, 0 );
-		} else if ( Gdx.input.isKeyPressed( Keys.D ) ) {
+		} else if ( Gdx.input.isKeyPressed( Keys.D )  || (Gdx.input.getAccelerometerX() >= 0 )) {
 			setDirection( 300, 0 );
 		} else {
 			setDirection( 0, 0 );

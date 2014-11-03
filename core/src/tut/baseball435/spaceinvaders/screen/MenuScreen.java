@@ -16,7 +16,7 @@ public class MenuScreen extends Screen
 	{
 		// Initiate
 		camera = new OrthoCamera();
-		player = new Player( new Vector2( 470, 15 ), new Vector2( 0, 0 ) );
+		player = new Player( new Vector2( 220, 15 ), new Vector2( 0, 0 ) );
 	}
 	
 	@Override
