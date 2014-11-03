@@ -6,7 +6,12 @@ import tut.baseball435.spaceinvaders.MainGame;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new MainGame(), config);
+		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
+		// Window configuration
+		cfg.title = "SpaceInvaders";
+		cfg.width = MainGame.WIDTH;
+		cfg.height = MainGame.HEIGHT;
+		
+		new LwjglApplication(new MainGame(), cfg);
 	}
 }
