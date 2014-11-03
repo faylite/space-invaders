@@ -1,43 +1,52 @@
 package tut.baseball435.spaceinvaders.screen;
 
+import tut.baseball435.spaceinvaders.camera.OrthoCamera;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MenuScreen extends Screen
 {
+	private OrthoCamera camera;
 	
 	@Override
 	public void create()
 	{
-		System.out.println( "Created" );
+		camera = new OrthoCamera();
+	}
+	
+	@Override
+	public void update()
+	{
+		camera.update();
 	}
 	
 	@Override
 	public void render( SpriteBatch sb )
-	{
-		System.out.println("Render");
+	{	
+		
 	}
-
+	
 	@Override
 	public void resize( int width, int height )
 	{
-		System.out.println("Resize");
+		camera.resize();
 	}
-
+	
 	@Override
 	public void dispose()
-	{
+	{	
 		
 	}
-
+	
 	@Override
 	public void pause()
-	{
+	{	
 		
 	}
-
+	
 	@Override
 	public void resume()
-	{
+	{	
 		
 	}
 }
