@@ -4,14 +4,16 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import tut.baseball435.spaceinvaders.MainGame;
 
-public class DesktopLauncher {
-	public static void main (String[] arg) {
+public class DesktopLauncher
+{
+	public static void main( String[] arg )
+	{
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		// Window configuration
 		cfg.title = "SpaceInvaders";
 		cfg.width = MainGame.WIDTH;
 		cfg.height = MainGame.HEIGHT;
 		
-		new LwjglApplication(new MainGame(), cfg);
+		new LwjglApplication( new MainGame(), cfg );
 	}
 }

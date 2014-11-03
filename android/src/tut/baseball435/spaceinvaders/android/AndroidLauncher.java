@@ -6,10 +6,12 @@ import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import tut.baseball435.spaceinvaders.MainGame;
 
-public class AndroidLauncher extends AndroidApplication {
+public class AndroidLauncher extends AndroidApplication
+{
 	@Override
-	protected void onCreate (Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+	protected void onCreate( Bundle savedInstanceState )
+	{
+		super.onCreate( savedInstanceState );
 		AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
 		
 		// For battery saving
@@ -17,6 +19,6 @@ public class AndroidLauncher extends AndroidApplication {
 		cfg.useCompass = false;
 		// --
 		
-		initialize(new MainGame(), cfg);
+		initialize( new MainGame(), cfg );
 	}
 }
