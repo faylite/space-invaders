@@ -9,10 +9,13 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Player extends Entity
 {
+	private final EntityManager entityManager;
+	private long lastFire;
 	
-	public Player( Vector2 pos, Vector2 direction )
+	public Player( Vector2 pos, Vector2 direction, EntityManager entityManager )
 	{
 		super( TextureManager.PLAYER, pos, direction );
+		this.entityManager = entityManager;
 	}
 	
 	@Override
@@ -22,14 +25,23 @@ public class Player extends Entity
 		
 		// Left input listener
 		if ( Gdx.input.isKeyPressed( Keys.A ) || Gdx.input.isKeyPressed( Keys.LEFT )
-				|| (Gdx.input.getAccelerometerX() <= -1 )) {
+				|| ( Gdx.input.getAccelerometerX() <= -1 ) ) {
 			setDirection( -300, 0 );
+		}
 		// Right input listener
-		} else if ( Gdx.input.isKeyPressed( Keys.D ) || Gdx.input.isKeyPressed( Keys.RIGHT )  
-				|| (Gdx.input.getAccelerometerX() >= 1 )) {
+		else if ( Gdx.input.isKeyPressed( Keys.D ) || Gdx.input.isKeyPressed( Keys.RIGHT )
+				|| ( Gdx.input.getAccelerometerX() >= 1 ) ) {
 			setDirection( 300, 0 );
-		} else {
+		}
+		// Else stop movement
+		else {
 			setDirection( 0, 0 );
+		}
+		// Fire missile
+		if ( Gdx.input.isKeyPressed( Keys.SPACE ) ) {
+			if ( System.currentTimeMillis() - lastFire >= 250 )
+				entityManager.addEntity( new Missile( pos.cpy().add( 0, 0 ) ) );
+				lastFire = System.currentTimeMillis();
 		}
 	}
 }

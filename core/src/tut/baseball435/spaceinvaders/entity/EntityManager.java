@@ -16,7 +16,7 @@ public class EntityManager
 	
 	public EntityManager( int amount )
 	{
-		player = new Player( new Vector2( 220, 15 ), new Vector2( 0, 0 ) );
+		player = new Player( new Vector2( 220, 15 ), new Vector2( 0, 0 ), this );
 		for ( int i = 0; i < amount; i++ ) {
 			float x = MathUtils.random( 0, MainGame.WIDTH - TextureManager.ENEMY.getWidth() );
 			float y = MathUtils.random( MainGame.HEIGHT, MainGame.HEIGHT * 2 );
@@ -44,5 +44,21 @@ public class EntityManager
 	public void addEntity( Entity entity )
 	{
 		entities.add( entity );
+	}
+	
+	private Array<Enemy> getEnemies()
+	{
+		Array<Enemy> ret = new Array<Enemy>();
+		for ( Entity e:entities ) {
+			if ( e instanceof Enemy ) {
+				ret.add( (Enemy) e );
+			}
+		}
+		return ret;
+	}
+	
+	public boolean gameOver()
+	{
+		return getEnemies().size <= 0;
 	}
 }
