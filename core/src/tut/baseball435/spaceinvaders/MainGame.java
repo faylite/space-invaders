@@ -14,6 +14,14 @@ public class MainGame extends ApplicationAdapter
 {
 	public static int WIDTH = 480, HEIGHT = 800;
 	
+	public static boolean TOUCH(){
+		String t = Gdx.app.getType().toString();
+		if ( t == "Desktop" ){
+			return false;
+		} else {
+			return true;
+		}
+	}
 	SpriteBatch batch;
 	
 	@Override
