@@ -76,17 +76,17 @@ public class InputHandler
 	}
 	private void move( int direction )
 	{
-		switch ( direction )
-		{
-		case 1:
+		if ( ( direction == left ) && ( player.getPlayerPostion().x > 0 ) ) {
+			// Move left
 			player.setDirection( -movementSpeed, 0 );
-			break;
-		case 2:
+		} else if ( ( direction == right )
+				&& ( player.getPlayerPostion().x < MainGame.WIDTH
+						- TextureManager.PLAYER.getWidth() ) ) {
+			// Move right ------------
 			player.setDirection( movementSpeed, 0 );
-			break;
-		default:
+		} else {
+			// Stop moving -----------
 			player.setDirection( 0, 0 );
-			break;
 		}
 	}
 	private void fireMissile()
