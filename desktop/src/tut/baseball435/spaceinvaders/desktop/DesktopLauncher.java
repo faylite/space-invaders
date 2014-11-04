@@ -1,8 +1,9 @@
 package tut.baseball435.spaceinvaders.desktop;
 
+import tut.baseball435.spaceinvaders.MainGame;
+
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import tut.baseball435.spaceinvaders.MainGame;
 
 public class DesktopLauncher
 {

@@ -4,6 +4,8 @@ import tut.baseball435.spaceinvaders.MainGame;
 import tut.baseball435.spaceinvaders.TextureManager;
 import tut.baseball435.spaceinvaders.camera.OrthoCamera;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -31,6 +33,12 @@ public class GameOverScreen extends Screen
 	public void update()
 	{
 		camera.update();
+		if (Gdx.input.isTouched()){
+			exit();
+		}
+		else if (Gdx.input.isKeyPressed(Keys.SPACE)){
+			exit();
+		}
 	}
 	
 	@Override
@@ -47,10 +55,13 @@ public class GameOverScreen extends Screen
 	{
 		camera.resize();
 	}
+	private void exit(){
+		Gdx.app.exit();
+	}
 	
 	@Override
 	public void dispose()
-	{	
+	{
 		
 	}
 	
@@ -65,5 +76,4 @@ public class GameOverScreen extends Screen
 	{	
 		
 	}
-	
 }
