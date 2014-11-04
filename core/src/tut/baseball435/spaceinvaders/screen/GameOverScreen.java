@@ -18,12 +18,13 @@ public class GameOverScreen extends Screen
 	
 	private String prompt;
 	
-	public GameOverScreen(boolean won){
-		if (won){
+	public GameOverScreen( boolean won )
+	{
+		if ( won ) {
 			texture = TextureManager.GAME_WON;
 		} else {
 			texture = TextureManager.GAME_OVER;
-		}	
+		}
 	}
 	@Override
 	public void create()
@@ -32,7 +33,7 @@ public class GameOverScreen extends Screen
 		camera = new OrthoCamera();
 		camera.resize();
 		
-		if (MainGame.TOUCH()){
+		if ( MainGame.TOUCH() ) {
 			prompt = "Touch to exit";
 		} else {
 			prompt = "Press ENTER to exit";
@@ -43,21 +44,21 @@ public class GameOverScreen extends Screen
 	public void update()
 	{
 		camera.update();
-		if (Gdx.input.isTouched()){
-			exit();
-		}
-		else if (Gdx.input.isKeyPressed(Keys.ENTER)){
-			exit();
+		if ( MainGame.TOUCH() && Gdx.input.isTouched() ) {
+			Gdx.app.exit();
+		} else if ( Gdx.input.isKeyPressed( Keys.ENTER ) ) {
+			Gdx.app.exit();
 		}
 	}
-	
 	@Override
 	public void render( SpriteBatch sb )
 	{
 		sb.setProjectionMatrix( camera.combined );
 		sb.begin();
-		sb.draw(texture, MainGame.WIDTH/2 - texture.getWidth()/2, MainGame.HEIGHT/2 - texture.getHeight()/2);
-		font.draw( sb, prompt, MainGame.WIDTH/2 - font.getBounds( prompt ).width/2 , MainGame.HEIGHT/4);
+		sb.draw( texture, MainGame.WIDTH / 2 - texture.getWidth() / 2, MainGame.HEIGHT / 2
+				- texture.getHeight() / 2 );
+		font.draw( sb, prompt, MainGame.WIDTH / 2 - font.getBounds( prompt ).width / 2,
+				MainGame.HEIGHT / 4 );
 		sb.end();
 	}
 	
@@ -66,13 +67,9 @@ public class GameOverScreen extends Screen
 	{
 		camera.resize();
 	}
-	private void exit(){
-		Gdx.app.exit();
-	}
-	
 	@Override
 	public void dispose()
-	{
+	{	
 		
 	}
 	
