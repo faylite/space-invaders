@@ -1,14 +1,15 @@
 package tut.baseball435.spaceinvaders.entity;
 
-import com.badlogic.gdx.graphics.Texture;
+import tut.baseball435.spaceinvaders.TextureManager;
+
 import com.badlogic.gdx.math.Vector2;
 
 public class Enemy extends Entity
 {
 
-	public Enemy( Texture texture, Vector2 pos, Vector2 direction )
+	public Enemy( Vector2 pos, Vector2 direction )
 	{
-		super( texture, pos, direction );
+		super( TextureManager.ENEMY, pos, direction );
 	}
 
 	@Override
