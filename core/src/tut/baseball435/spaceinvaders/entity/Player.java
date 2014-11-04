@@ -22,6 +22,7 @@ public class Player extends Entity
 	{
 		pos.add( direction );
 		
+		// -----------------------------------	 Controls	---------------------------------
 		// Left input listener
 		if ( Gdx.input.isKeyPressed( Keys.A ) || Gdx.input.isKeyPressed( Keys.LEFT )) {
 			setDirection( -300, 0 );
@@ -42,5 +43,6 @@ public class Player extends Entity
 				lastFire = System.currentTimeMillis();
 			}
 		}
+		// -----------------------------------	    End		 ---------------------------------
 	}
 }
