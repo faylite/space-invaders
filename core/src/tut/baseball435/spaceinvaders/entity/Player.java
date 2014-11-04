@@ -39,9 +39,11 @@ public class Player extends Entity
 		}
 		// Fire missile
 		if ( Gdx.input.isKeyPressed( Keys.SPACE ) ) {
-			if ( System.currentTimeMillis() - lastFire >= 250 )
-				entityManager.addEntity( new Missile( pos.cpy().add( 0, 0 ) ) );
+			if ( System.currentTimeMillis() - lastFire >= 250 ){
+				entityManager.addEntity( new Missile( pos.cpy().add( ( 25 ),
+						TextureManager.PLAYER.getHeight() ) ) );
 				lastFire = System.currentTimeMillis();
+			}
 		}
 	}
 }

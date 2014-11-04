@@ -2,6 +2,8 @@ package tut.baseball435.spaceinvaders.entity;
 
 import tut.baseball435.spaceinvaders.MainGame;
 import tut.baseball435.spaceinvaders.TextureManager;
+import tut.baseball435.spaceinvaders.screen.GameOverScreen;
+import tut.baseball435.spaceinvaders.screen.ScreenManager;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
@@ -31,6 +33,12 @@ public class EntityManager
 		for ( Entity e:entities ) {
 			e.update();
 		}
+		for ( Missile m:getMissiles() ) {
+			if ( m.checkEnd() ) {
+				entities.removeValue( m, false );
+			}
+		}
+		checkCollisions();
 	}
 	
 	public void render( SpriteBatch sb )
@@ -38,6 +46,24 @@ public class EntityManager
 		player.render( sb );
 		for ( Entity e:entities ) {
 			e.render( sb );
+		}
+	}
+	
+	private void checkCollisions()
+	{
+		for ( Enemy e:getEnemies() ) {
+			for ( Missile m:getMissiles() ) {
+				if ( e.getBounds().overlaps( m.getBounds() ) ) {
+					entities.removeValue( e, false );
+					entities.removeValue( m, false );
+					if ( gameOver() ) {
+						ScreenManager.setScreen( new GameOverScreen( true ) );
+					}
+				}
+			}
+			if ( e.getBounds().overlaps( player.getBounds() ) ) {
+				ScreenManager.setScreen( new GameOverScreen( false ) );
+			}
 		}
 	}
 	
@@ -52,6 +78,17 @@ public class EntityManager
 		for ( Entity e:entities ) {
 			if ( e instanceof Enemy ) {
 				ret.add( (Enemy) e );
+			}
+		}
+		return ret;
+	}
+	
+	private Array<Missile> getMissiles()
+	{
+		Array<Missile> ret = new Array<Missile>();
+		for ( Entity e:entities ) {
+			if ( e instanceof Missile ) {
+				ret.add( (Missile) e );
 			}
 		}
 		return ret;
