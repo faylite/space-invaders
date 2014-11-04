@@ -1,6 +1,7 @@
 package tut.baseball435.spaceinvaders.screen;
 
 import tut.baseball435.spaceinvaders.camera.OrthoCamera;
+import tut.baseball435.spaceinvaders.entity.EntityManager;
 import tut.baseball435.spaceinvaders.entity.Player;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -9,21 +10,21 @@ import com.badlogic.gdx.math.Vector2;
 public class GameScreen extends Screen
 {
 	private OrthoCamera camera;
-	private Player player;
+	private EntityManager entityManager;
 	
 	@Override
 	public void create()
 	{
 		// Initiate
 		camera = new OrthoCamera();
-		player = new Player( new Vector2( 220, 15 ), new Vector2( 0, 0 ) );
+		entityManager = new EntityManager(10);
 	}
 	
 	@Override
 	public void update()
 	{
 		camera.update();
-		player.update();
+		entityManager.update();
 	}
 	
 	@Override
@@ -31,7 +32,7 @@ public class GameScreen extends Screen
 	{
 		sb.setProjectionMatrix( camera.combined );
 		sb.begin();
-		player.render( sb );
+		entityManager.render( sb );
 		sb.end();
 	}
 	
