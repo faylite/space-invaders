@@ -3,10 +3,8 @@ package code.jex.spaceinvaders;
 import code.jex.spaceinvaders.screen.GameScreen;
 import code.jex.spaceinvaders.screen.ScreenManager;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 

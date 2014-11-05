@@ -1,8 +1,5 @@
 package code.jex.spaceinvaders.screen;
 
-import code.jex.spaceinvaders.MainGame;
-
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public abstract class Screen

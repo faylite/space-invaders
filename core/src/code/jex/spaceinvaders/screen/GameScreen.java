@@ -2,10 +2,8 @@ package code.jex.spaceinvaders.screen;
 
 import code.jex.spaceinvaders.camera.OrthoCamera;
 import code.jex.spaceinvaders.entity.EntityManager;
-import code.jex.spaceinvaders.entity.Player;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen extends Screen
 {
