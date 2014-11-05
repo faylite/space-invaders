@@ -45,7 +45,8 @@ public class GameOverScreen extends Screen
 	{
 		camera.update();
 		if ( MainGame.TOUCH() && Gdx.input.isTouched() ) {
-			// TODO: Try to find a better way to handle closing the application on touch.
+			// TODO: Try to find a better way to handle closing the application
+			// on touch.
 			System.exit( 0 );
 		} else if ( Gdx.input.isKeyPressed( Keys.ENTER ) ) {
 			Gdx.app.exit();
