@@ -31,7 +31,7 @@ public abstract class Entity
 	}
 	
 	public Rectangle getBounds()
-	{	
+	{
 		return new Rectangle( pos.x, pos.y - texture.getHeight(), texture.getWidth(),
 				texture.getHeight() );
 	}

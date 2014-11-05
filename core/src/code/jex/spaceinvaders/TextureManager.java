@@ -10,4 +10,5 @@ public class TextureManager
 	public static Texture ENEMY = new Texture( Gdx.files.internal( "enemy.png" ) );
 	public static Texture GAME_OVER = new Texture( Gdx.files.internal( "gameover.png" ) );
 	public static Texture GAME_WON = new Texture( Gdx.files.internal( "gamewon.png" ) );
+	public static Texture EXPLOSION = new Texture(Gdx.files.internal( "animations/explosionframes.png" ));
 }

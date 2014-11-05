@@ -5,7 +5,7 @@
 	<inherits name='com.badlogic.gdx.physics.box2d.box2d-gwt' />
 
     <inherits name='MainGame' />
-	<entry-point class='tut.baseball435.spaceinvaders.client.HtmlLauncher' />
+	<entry-point class='code.jex.spaceinvaders.client.HtmlLauncher' />
 	
 	<add-linker name="xsiframe"/>
 	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>

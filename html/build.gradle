@@ -7,8 +7,8 @@ gwt {
     minHeapSize="1G"
 
     src = files(file("src/")) // Needs to be in front of "modules" below.
-    modules 'tut.baseball435.spaceinvaders.GdxDefinition'
-    devModules 'tut.baseball435.spaceinvaders.GdxDefinitionSuperdev'
+    modules 'code.jex.spaceinvaders.GdxDefinition'
+    devModules 'code.jex.spaceinvaders.GdxDefinitionSuperdev'
     project.webAppDirName = 'webapp'
 
     compiler {

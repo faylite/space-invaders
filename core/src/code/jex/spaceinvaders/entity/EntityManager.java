@@ -38,6 +38,11 @@ public class EntityManager
 				entities.removeValue( m, false );
 			}
 		}
+		for ( Explosion e:getExplosions() ) {
+			if (e.getFinished()){
+				entities.removeValue( e, false );
+			}
+		}
 		checkCollisions();
 	}
 	
@@ -54,6 +59,7 @@ public class EntityManager
 		for ( Enemy e:getEnemies() ) {
 			for ( Missile m:getMissiles() ) {
 				if ( e.getBounds().overlaps( m.getBounds() ) ) {
+					addEntity( new Explosion( new Vector2( e.pos.x, e.pos.y ), new Vector2( 0, 0 ) ) );
 					entities.removeValue( e, false );
 					entities.removeValue( m, false );
 					if ( gameOver() ) {
@@ -89,6 +95,16 @@ public class EntityManager
 		for ( Entity e:entities ) {
 			if ( e instanceof Missile ) {
 				ret.add( (Missile) e );
+			}
+		}
+		return ret;
+	}
+	private Array<Explosion> getExplosions()
+	{
+		Array<Explosion> ret = new Array<Explosion>();
+		for ( Entity e:entities ) {
+			if ( e instanceof Explosion ) {
+				ret.add( (Explosion) e );
 			}
 		}
 		return ret;
