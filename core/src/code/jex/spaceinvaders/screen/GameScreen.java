@@ -1,6 +1,5 @@
 package code.jex.spaceinvaders.screen;
 
-import code.jex.spaceinvaders.TextureManager;
 import code.jex.spaceinvaders.camera.OrthoCamera;
 import code.jex.spaceinvaders.entity.EntityManager;
 
