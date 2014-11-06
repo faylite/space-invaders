@@ -1,6 +1,5 @@
 package code.jex.spaceinvaders.screen;
 
-import code.jex.spaceinvaders.SoundManager;
 import code.jex.spaceinvaders.camera.OrthoCamera;
 import code.jex.spaceinvaders.entity.EntityManager;
 
@@ -16,9 +15,8 @@ public class GameScreen extends Screen
 	{
 		// Initiate
 		camera = new OrthoCamera();
-		entityManager = new EntityManager(50);
-		
-		SoundManager.MUS_BACKGROUND.play();
+		camera.resize();
+		entityManager = new EntityManager(40);
 	}
 	
 	@Override
@@ -46,6 +44,7 @@ public class GameScreen extends Screen
 	@Override
 	public void dispose()
 	{	
+
 		
 	}
 	

@@ -51,7 +51,7 @@ public class InputHandler
 			move( stop );
 		}
 		// Fire missile
-		if ( true ) {
+		if ( !EntityManager.GAMEOVER ) {
 			fireMissile();
 		}
 	}
@@ -70,7 +70,7 @@ public class InputHandler
 			move( stop );
 		}
 		// Fire missile
-		if ( Gdx.input.isKeyPressed( Keys.SPACE ) ) {
+		if ( Gdx.input.isKeyPressed( Keys.SPACE )  && !EntityManager.GAMEOVER ) {
 			fireMissile();
 		}
 	}

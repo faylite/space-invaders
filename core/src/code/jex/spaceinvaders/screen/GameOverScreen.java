@@ -18,6 +18,8 @@ public class GameOverScreen extends Screen
 	
 	private String prompt;
 	
+	private int waitCounter;
+	
 	public GameOverScreen( boolean won )
 	{
 		if ( won ) {
@@ -34,23 +36,25 @@ public class GameOverScreen extends Screen
 		camera.resize();
 		
 		if ( MainGame.TOUCH() ) {
-			prompt = "Touch to exit";
+			prompt = "Touch to restart";
 		} else {
-			prompt = "Press ENTER to exit";
+			prompt = "Press ENTER to restart";
 		}
+		waitCounter = 0;
 	}
 	
 	@Override
 	public void update()
 	{
 		camera.update();
-		if ( MainGame.TOUCH() && Gdx.input.isTouched() ) {
-			// TODO: Try to find a better way to handle closing the application
-			// on touch.
-			System.exit( 0 );
-		} else if ( Gdx.input.isKeyPressed( Keys.ENTER ) ) {
-			Gdx.app.exit();
+		if(waitCounter > 50){
+			if ( MainGame.TOUCH() && Gdx.input.isTouched() ) {
+				ScreenManager.setScreen( new MainMenuScreen() );
+			} else if ( Gdx.input.isKeyPressed( Keys.ENTER ) ) {
+				ScreenManager.setScreen( new MainMenuScreen() );
+			}
 		}
+		waitCounter++;
 	}
 	@Override
 	public void render( SpriteBatch sb )

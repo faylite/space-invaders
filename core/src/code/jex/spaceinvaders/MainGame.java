@@ -1,6 +1,6 @@
 package code.jex.spaceinvaders;
 
-import code.jex.spaceinvaders.screen.GameScreen;
+import code.jex.spaceinvaders.screen.MainMenuScreen;
 import code.jex.spaceinvaders.screen.ScreenManager;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -26,7 +26,7 @@ public class MainGame extends ApplicationAdapter
 	public void create()
 	{
 		batch = new SpriteBatch();
-		ScreenManager.setScreen( new GameScreen() );
+		ScreenManager.setScreen( new MainMenuScreen() );
 	}
 	@Override
 	public void dispose()
