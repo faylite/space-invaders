@@ -22,6 +22,7 @@ public class GameScreen extends Screen
 		camera = new OrthoCamera();
 		entityManager = new EntityManager(50);
 		
+		// Initiate music and start playing
 		backMusic = Gdx.audio.newMusic( Gdx.files.internal( "sound/background_music.mp3" ) );
 		backMusic.play();
 	}

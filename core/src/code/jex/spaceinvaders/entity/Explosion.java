@@ -3,6 +3,7 @@ package code.jex.spaceinvaders.entity;
 import code.jex.spaceinvaders.TextureManager;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,6 +22,9 @@ public class Explosion extends Entity
 	private TextureRegion currentFrame;
 	// --
 	
+	// Sfx
+	private Sound sndExpl;
+	
 	private boolean finished;
 	
 	private float x, y , stateTime;
@@ -32,6 +36,7 @@ public class Explosion extends Entity
 		this.x = pos.x;
 		this.y = pos.y;
 		
+		// Split up texture sheet
 		TextureRegion[][] tmp = TextureRegion.split( explosion, explosion.getWidth()
 				/ EXPLOSION_COLS, explosion.getHeight() / EXPLOSION_ROWS );
 		
@@ -44,6 +49,10 @@ public class Explosion extends Entity
 		}
 		explosionAnimation = new Animation(0.025f, explosionFrames);
         stateTime = 0f;
+        
+        // Explosion sfx
+        sndExpl = Gdx.audio.newSound( Gdx.files.internal( "sound/sfxExplosion.wav" ) );
+        sndExpl.play();
 	}
 	@Override
 	public void render( SpriteBatch sb )
