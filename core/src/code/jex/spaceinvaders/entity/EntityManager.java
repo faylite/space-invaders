@@ -94,6 +94,7 @@ public class EntityManager
 			for ( Missile m:getMissiles() ) {
 				if ( e.getBounds().overlaps( m.getBounds() ) ) {
 					addEntity( new Explosion( new Vector2( e.pos.x, e.pos.y ), new Vector2( 0, 0 ) ) );
+					Player.score++;
 					entities.removeValue( e, false );
 					entities.removeValue( m, false );
 					if ( gameOver() ) {
@@ -101,7 +102,7 @@ public class EntityManager
 					}
 				}
 			}
-			if ( e.getBounds().overlaps( player.getBounds() ) && !GAMEOVER) {
+			if ( e.getBounds().overlaps( player.getBounds() ) && !GAMEOVER && !MainGame.GOD_MODE) {
 				addEntity( new Explosion(new Vector2(player.pos.x , player.pos.y) , new Vector2(0,0)));
 				entities.removeValue( player, true );
 				
