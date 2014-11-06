@@ -77,13 +77,8 @@ public class EntityManager
 			e.render( sb );
 		}
 		if (gameOver){
-			int i;
-			try{
-				i = (int)gameOverMsg.getBounds( gameOverMsgStr ).width;
-			} catch (ParseException pe){
-				System.out.println("Error: Could not parse int from float value GameOverMsgStr.width");
-				i = 256;
-			}
+			int i = 0;
+			i = (int)gameOverMsg.getBounds( gameOverMsgStr ).width;
 			gameOverMsg.draw( sb, gameOverMsgStr , MainGame.WIDTH/2 - i/2 , MainGame.HEIGHT/4 * 3 );
 		}
 	}
