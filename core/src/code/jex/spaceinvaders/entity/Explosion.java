@@ -1,9 +1,9 @@
 package code.jex.spaceinvaders.entity;
 
+import code.jex.spaceinvaders.SoundManager;
 import code.jex.spaceinvaders.TextureManager;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,9 +21,6 @@ public class Explosion extends Entity
 	private Animation explosionAnimation;
 	private TextureRegion currentFrame;
 	// --
-	
-	// Sfx
-	private Sound sndExpl;
 	
 	private boolean finished;
 	
@@ -50,9 +47,7 @@ public class Explosion extends Entity
 		explosionAnimation = new Animation(0.025f, explosionFrames);
         stateTime = 0f;
         
-        // Explosion sfx
-        sndExpl = Gdx.audio.newSound( Gdx.files.internal( "sound/sfxExplosion.wav" ) );
-        sndExpl.play();
+        SoundManager.SFX_EXPLOSION.play();
 	}
 	@Override
 	public void render( SpriteBatch sb )

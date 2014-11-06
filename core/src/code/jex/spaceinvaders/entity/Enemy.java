@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Enemy extends Entity
 {
+	
 	public Enemy( Vector2 pos, Vector2 direction )
 	{
 		super( TextureManager.ENEMY, pos, direction );
