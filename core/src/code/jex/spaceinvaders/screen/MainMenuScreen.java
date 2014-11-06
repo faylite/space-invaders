@@ -26,7 +26,7 @@ public class MainMenuScreen extends Screen
 	public void create()
 	{
 		TextureManager.resume();
-		SoundManager.resume();
+		
 		
 		camera = new OrthoCamera();
 		camera.resize();
@@ -43,8 +43,12 @@ public class MainMenuScreen extends Screen
 		promptFont.setScale( 1 );
 		
 		// Start music
-		SoundManager.MUS_BACKGROUND.setLooping( true );
-		SoundManager.MUS_BACKGROUND.play();
+		if (!SoundManager.MUS_BACKGROUND.isPlaying()){
+			SoundManager.resume();
+			SoundManager.MUS_BACKGROUND.setLooping( true );
+			SoundManager.MUS_BACKGROUND.play();
+		}
+		
 		
 		waitCounter = 0;
 	}
