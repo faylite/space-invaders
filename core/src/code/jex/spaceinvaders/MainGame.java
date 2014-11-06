@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class MainGame extends ApplicationAdapter
 {
 	// Dev options
-	public static boolean MUSIC = false;
+	public static boolean MUSIC = true;
 	public static boolean INIFNITE_ENEMIES = true;
 	
 	public static int WIDTH = 480, HEIGHT = 800;
