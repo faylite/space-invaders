@@ -3,6 +3,8 @@ package code.jex.spaceinvaders.screen;
 import code.jex.spaceinvaders.camera.OrthoCamera;
 import code.jex.spaceinvaders.entity.EntityManager;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameScreen extends Screen
@@ -10,12 +12,18 @@ public class GameScreen extends Screen
 	private OrthoCamera camera;
 	private EntityManager entityManager;
 	
+	// Load music
+	private Music backMusic;
+	
 	@Override
 	public void create()
 	{
 		// Initiate
 		camera = new OrthoCamera();
-		entityManager = new EntityManager(10);
+		entityManager = new EntityManager(50);
+		
+		backMusic = Gdx.audio.newMusic( Gdx.files.internal( "sound/background_music.mp3" ) );
+		backMusic.play();
 	}
 	
 	@Override
