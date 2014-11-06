@@ -41,4 +41,7 @@ public abstract class Entity
 		direction.set( x, y );
 		direction.scl( Gdx.graphics.getDeltaTime() );
 	}
+	public void dispose(){
+		this.texture.dispose();
+	}
 }

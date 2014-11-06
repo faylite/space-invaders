@@ -2,6 +2,7 @@ package code.jex.spaceinvaders.screen;
 
 import code.jex.spaceinvaders.MainGame;
 import code.jex.spaceinvaders.SoundManager;
+import code.jex.spaceinvaders.TextureManager;
 import code.jex.spaceinvaders.camera.OrthoCamera;
 
 import com.badlogic.gdx.Gdx;
@@ -24,6 +25,9 @@ public class MainMenuScreen extends Screen
 	@Override
 	public void create()
 	{
+		TextureManager.resume();
+		SoundManager.resume();
+		
 		camera = new OrthoCamera();
 		camera.resize();
 		
@@ -85,19 +89,21 @@ public class MainMenuScreen extends Screen
 	@Override
 	public void dispose()
 	{
-		
+		titleFont.dispose();
+		promptFont.dispose();
 	}
 	
 	@Override
 	public void pause()
-	{	
-		
+	{
+		TextureManager.pause();
+		SoundManager.pause();
 	}
 	
 	@Override
 	public void resume()
 	{	
-		
+		create();
 	}
 	
 }

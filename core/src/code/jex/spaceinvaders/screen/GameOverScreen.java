@@ -76,7 +76,8 @@ public class GameOverScreen extends Screen
 	@Override
 	public void dispose()
 	{	
-		
+		texture.dispose();
+		font.dispose();
 	}
 	
 	@Override
@@ -88,6 +89,6 @@ public class GameOverScreen extends Screen
 	@Override
 	public void resume()
 	{	
-		
+		ScreenManager.setScreen( new MainMenuScreen() );
 	}
 }

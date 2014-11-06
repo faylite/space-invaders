@@ -1,5 +1,6 @@
 package code.jex.spaceinvaders.screen;
 
+import code.jex.spaceinvaders.TextureManager;
 import code.jex.spaceinvaders.camera.OrthoCamera;
 import code.jex.spaceinvaders.entity.EntityManager;
 
@@ -44,19 +45,18 @@ public class GameScreen extends Screen
 	@Override
 	public void dispose()
 	{	
-
 		
 	}
 	
 	@Override
 	public void pause()
-	{	
-		
+	{
+		ScreenManager.setScreen( new MainMenuScreen() );
 	}
 	
 	@Override
 	public void resume()
-	{	
+	{
 		
 	}
 }
