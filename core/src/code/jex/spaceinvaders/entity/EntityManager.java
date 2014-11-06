@@ -5,10 +5,13 @@ import code.jex.spaceinvaders.TextureManager;
 import code.jex.spaceinvaders.screen.GameOverScreen;
 import code.jex.spaceinvaders.screen.ScreenManager;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 public class EntityManager
 {
@@ -16,20 +19,34 @@ public class EntityManager
 	private final Array<Entity> entities = new Array<Entity>();
 	private final Player player;
 	
+	// Game state
+	private boolean wonGame;
+	private boolean gameOver;
+	private float gameOverWaitCounter;
+	
+	// Game Over message
+	private BitmapFont gameOverMsg;
+	private final String gameOverMsgStr = "Game Over";
+	
 	public EntityManager( int amount )
 	{
-		player = new Player( new Vector2( 220, 15 ), new Vector2( 0, 0 ), this );
+		addEntity(player = new Player( new Vector2( 220, 15 ), new Vector2( 0, 0 ), this ));
 		for ( int i = 0; i < amount; i++ ) {
 			float x = MathUtils.random( 0, MainGame.WIDTH - TextureManager.ENEMY.getWidth() );
 			float y = MathUtils.random( MainGame.HEIGHT, MainGame.HEIGHT * 2 );
 			float speed = MathUtils.random( 2, 5 );
 			addEntity( new Enemy( new Vector2( x, y ), new Vector2( 0, -speed ) ) );
 		}
+		gameOverMsg = new BitmapFont();
+		gameOverMsg.setScale( 4 );
 	}
 	
 	public void update()
 	{
-		player.update();
+		if(!gameOver)
+			player.update();
+		
+		// Render entities
 		for ( Entity e:entities ) {
 			e.update();
 		}
@@ -43,14 +60,31 @@ public class EntityManager
 				entities.removeValue( e, false );
 			}
 		}
+		// ----
 		checkCollisions();
+		
+		// Game over renders
+		if (gameOver) {
+			// Try to end game if wait time is over
+			gameOverWaitCounter++;
+			tryEndGame();
+		}
 	}
 	
 	public void render( SpriteBatch sb )
 	{
-		player.render( sb );
 		for ( Entity e:entities ) {
 			e.render( sb );
+		}
+		if (gameOver){
+			int i;
+			try{
+				i = (int)gameOverMsg.getBounds( gameOverMsgStr ).width;
+			} catch (ParseException pe){
+				System.out.println("Error: Could not parse int from float value GameOverMsgStr.width");
+				i = 256;
+			}
+			gameOverMsg.draw( sb, gameOverMsgStr , MainGame.WIDTH/2 - i/2 , MainGame.HEIGHT/4 * 3 );
 		}
 	}
 	
@@ -63,12 +97,15 @@ public class EntityManager
 					entities.removeValue( e, false );
 					entities.removeValue( m, false );
 					if ( gameOver() ) {
-						ScreenManager.setScreen( new GameOverScreen( true ) );
+						endGame(true);
 					}
 				}
 			}
-			if ( e.getBounds().overlaps( player.getBounds() ) ) {
-				ScreenManager.setScreen( new GameOverScreen( false ) );
+			if ( e.getBounds().overlaps( player.getBounds() ) && !gameOver) {
+				addEntity( new Explosion(new Vector2(player.pos.x , player.pos.y) , new Vector2(0,0)));
+				entities.removeValue( player, true );
+				
+				endGame(false);
 			}
 		}
 	}
@@ -113,5 +150,15 @@ public class EntityManager
 	public boolean gameOver()
 	{
 		return getEnemies().size <= 0;
+	}
+	private void endGame(boolean win){
+		wonGame = win;
+		gameOver = true;
+		gameOverWaitCounter = 0;
+	}
+	private void tryEndGame(){
+		if (gameOverWaitCounter > 600){
+			ScreenManager.setScreen( new GameOverScreen(wonGame) );
+		}
 	}
 }
