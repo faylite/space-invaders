@@ -43,7 +43,7 @@ public class MainMenuScreen extends Screen
 		promptFont.setScale( 1 );
 		
 		// Start music
-		if (!SoundManager.MUS_BACKGROUND.isPlaying()){
+		if (!SoundManager.MUS_BACKGROUND.isPlaying() && MainGame.MUSIC){
 			SoundManager.resume();
 			SoundManager.MUS_BACKGROUND.setLooping( true );
 			SoundManager.MUS_BACKGROUND.play();

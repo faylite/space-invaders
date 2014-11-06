@@ -42,6 +42,12 @@ public class EntityManager
 	
 	public void update()
 	{
+		if (getEnemies().size <= 30 && MainGame.INIFNITE_ENEMIES){
+			float x = MathUtils.random( 0, MainGame.WIDTH - TextureManager.ENEMY.getWidth() );
+			float y = MathUtils.random( MainGame.HEIGHT, MainGame.HEIGHT * 2 );
+			float speed = MathUtils.random( 2, 5 );
+			addEntity( new Enemy( new Vector2( x, y ), new Vector2( 0, -speed ) ) );
+		}
 		if(!GAMEOVER)
 			player.update();
 		
