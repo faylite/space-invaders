@@ -22,7 +22,7 @@ public class GameScreen extends Screen
 		// Initiate
 		camera = new OrthoCamera();
 		camera.resize();
-		entityManager = new EntityManager(40);
+		entityManager = new EntityManager();
 		scoreFont = new BitmapFont();
 		scoreFont.setColor( Color.CYAN );
 		scoreFont.setScale( 2 );

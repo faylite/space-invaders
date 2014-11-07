@@ -10,23 +10,37 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MainGame extends ApplicationAdapter
 {
-	// Dev options
-	public static boolean MUSIC = false;
-	public static boolean INIFNITE_ENEMIES = true;
-	public static boolean GOD_MODE = false;
-	public static int FIRE_RATE = 100;
-	// Remember to enable music and disable god mode :P
+	// Dev options ---------------------------
+	// Remember to enable music and disable god mode before pushing to master :P
+	public static boolean MUSIC = true;
+	public static boolean INIFNITE_ENEMIES = true;// NOTE: True is now default.
+	public static boolean GOD_MODE = false;// OMG-Mode
+	public static int FIRE_RATE = 200;// Delay in milliseconds between shots.
 	
+	public static int ENEMIES = 50;
+	/*
+	 * Amount of enemies that will be on-screen at the same time,
+	 * Keeps enemy amount to this when INIFINITE_ENEMIES is true.
+	 */
+	
+	public static int ENEMY_SPEED = 1;// Enemy speed modifier multiplied by a number between 2,5
+	// ------------------------------------------
+	
+	// Game window screen width and height
 	public static int WIDTH = 480, HEIGHT = 800;
 	
-	public static boolean TOUCH(){
+	// Returns true if the platform is not desktops
+	// TODO: Maybe add individual checks for each platform. (Not req.)
+	public static boolean TOUCH()
+	{
 		String t = Gdx.app.getType().toString();
-		if ( t == "Desktop" ){
+		if ( t == "Desktop" ) {
 			return false;
 		} else {
 			return true;
 		}
 	}
+	
 	SpriteBatch batch;
 	
 	@Override
@@ -46,7 +60,7 @@ public class MainGame extends ApplicationAdapter
 	@Override
 	public void render()
 	{
-		Gdx.gl.glClearColor( 0, 0, 0, 1 );
+		Gdx.gl.glClearColor( 0, 0, 0, 0 );
 		Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT );
 		
 		if ( ScreenManager.getCurrentScreen() != null ) {

@@ -25,27 +25,26 @@ public class EntityManager
 	private BitmapFont gameOverMsg;
 	private final String gameOverMsgStr = "Game Over";
 	
-	public EntityManager( int amount )
+	public EntityManager(  )
 	{
 		// Reset game over state
 		GAMEOVER = false;
 		addEntity( player = new Player( new Vector2( 220, 15 ), new Vector2( 0, 0 ), this ) );
-		for ( int i = 0; i < amount; i++ ) {
+		for ( int i = 0; i < MainGame.ENEMIES; i++ ) {
 			float x = MathUtils.random( 0, MainGame.WIDTH - TextureManager.ENEMY.getWidth() );
 			float y = MathUtils.random( MainGame.HEIGHT, MainGame.HEIGHT * 2 );
-			float speed = MathUtils.random( 2, 5 );
+			float speed = MathUtils.random( 2, 5 ) * MainGame.ENEMY_SPEED;
 			addEntity( new Enemy( new Vector2( x, y ), new Vector2( 0, -speed ) ) );
 		}
 		gameOverMsg = new BitmapFont();
 		gameOverMsg.setScale( 4 );
 	}
-	
 	public void update()
 	{
 		if ( getEnemies().size <= 30 && MainGame.INIFNITE_ENEMIES ) {
 			float x = MathUtils.random( 0, MainGame.WIDTH - TextureManager.ENEMY.getWidth() );
 			float y = MathUtils.random( MainGame.HEIGHT, MainGame.HEIGHT * 2 );
-			float speed = MathUtils.random( 2, 5 );
+			float speed = MathUtils.random( 2, 5 ) * MainGame.ENEMY_SPEED;
 			addEntity( new Enemy( new Vector2( x, y ), new Vector2( 0, -speed ) ) );
 		}
 		if ( !GAMEOVER )

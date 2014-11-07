@@ -60,10 +60,12 @@ public class HighScoreScreen extends Screen
 		newHighScore = hsm.newHighScore( score );
 		waitCounter = 0;
 		
+		/*
 		if ( hsm.newHighScore( score ) ) {
 			TextInputDialog listener = new TextInputDialog();
 			Gdx.input.getTextInput( listener, "New highscore!", "Enter your name:" );
 		}
+		*/
 	}
 	
 	@Override
