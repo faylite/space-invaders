@@ -14,6 +14,7 @@ public class MainGame extends ApplicationAdapter
 	public static boolean MUSIC = false;
 	public static boolean INIFNITE_ENEMIES = true;
 	public static boolean GOD_MODE = false;
+	// Remember to enable music and disable god mode :P
 	
 	public static int WIDTH = 480, HEIGHT = 800;
 	
@@ -31,7 +32,6 @@ public class MainGame extends ApplicationAdapter
 	public void create()
 	{
 		batch = new SpriteBatch();
-		// ScreenManager.setScreen( new MainMenuScreen() );
 		ScreenManager.setScreen( new MainMenuScreen() );
 	}
 	@Override

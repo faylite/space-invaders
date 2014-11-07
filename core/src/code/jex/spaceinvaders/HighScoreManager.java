@@ -85,4 +85,15 @@ public class HighScoreManager
 		}
 		return builder;
 	}
+	public boolean newHighScore(int score){
+		boolean ret = false;
+		
+		for(int i =0;i<5;i++){
+			if(highscores.getInteger( "score"+i )<=score){
+				return true;
+			}
+		}
+		
+		return ret;
+	}
 }

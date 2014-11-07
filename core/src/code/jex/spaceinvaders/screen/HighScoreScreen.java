@@ -5,8 +5,13 @@ import java.util.ArrayList;
 import code.jex.spaceinvaders.HighScoreManager;
 import code.jex.spaceinvaders.MainGame;
 import code.jex.spaceinvaders.camera.OrthoCamera;
+import code.jex.spaceinvaders.entity.Player;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.BitmapFont.HAlignment;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class HighScoreScreen extends Screen
@@ -15,9 +20,14 @@ public class HighScoreScreen extends Screen
 	private HighScoreManager hsm;
 	
 	private BitmapFont scoreTable;
+	private BitmapFont newScore;
 	private BitmapFont scoresFont;
 	
-	private ArrayList<String> highScoreList;
+	private String newScoreMsg;
+	
+	private int score;
+	private boolean newHighScore;
+	private int waitCounter;
 	
 	@Override
 	public void create()
@@ -29,14 +39,31 @@ public class HighScoreScreen extends Screen
 		scoreTable = new BitmapFont();
 		scoreTable.scale( 2 );
 		
+		newScore = new BitmapFont();
+		newScore.setScale( 2 );
+		newScore.setColor( Color.YELLOW );
+		
 		scoresFont = new BitmapFont();
 		scoresFont.setScale( 1 );
+		
+		newScoreMsg = "New Highscore!";
+		score = Player.score;
+		newHighScore = hsm.newHighScore(score);
+		waitCounter = 0;
 	}
 	
 	@Override
 	public void update()
 	{
 		camera.update();
+		if ( waitCounter > 50 ) {
+			if ( MainGame.TOUCH() && Gdx.input.isTouched() ) {
+				ScreenManager.setScreen( new MainMenuScreen() );
+			} else if ( Gdx.input.isKeyPressed( Keys.ENTER ) ) {
+				ScreenManager.setScreen( new MainMenuScreen() );
+			}
+		}
+		waitCounter++;
 	}
 	
 	@Override
@@ -46,22 +73,32 @@ public class HighScoreScreen extends Screen
 		sb.begin();
 		scoreTable.draw( sb, "High Scores:",
 				MainGame.WIDTH / 2 - scoreTable.getBounds( "High Scores:" ).width / 2,
-				MainGame.HEIGHT / 8 * 7 );
-		float posY = MainGame.HEIGHT / 8 * 6;
-		scoresFont.drawMultiLine( sb, hsm.getHighScoreString(), MainGame.WIDTH/2 - scoresFont.getBounds( hsm.getHighScoreString() ).width/2, posY );
+				MainGame.HEIGHT / 10 * 9 );
+		
+		if(newHighScore){
+			newScore.draw( sb, newScoreMsg, MainGame.WIDTH / 2
+					- newScore.getBounds( newScoreMsg ).width / 2, MainGame.HEIGHT / 10 * 8 );
+		}
+		// Get the width of the text
+		float scoresFontWidth = scoresFont.getBounds( hsm.getHighScoreString() ).width / 2;
+		// Magic, don't touch!
+		scoresFont.drawMultiLine( sb, hsm.getHighScoreString(), MainGame.WIDTH / 2
+				- scoresFontWidth, MainGame.HEIGHT / 8 * 5, MainGame.WIDTH - scoresFontWidth / 4,
+				HAlignment.CENTER );
 		sb.end();
 	}
 	
 	@Override
 	public void resize( int width, int height )
-	{	
-		
+	{
+		camera.resize();
 	}
 	
 	@Override
 	public void dispose()
-	{	
-		
+	{
+		scoreTable.dispose();
+		scoresFont.dispose();
 	}
 	
 	@Override
@@ -72,8 +109,8 @@ public class HighScoreScreen extends Screen
 	
 	@Override
 	public void resume()
-	{	
-		
+	{
+		ScreenManager.setScreen( new MainMenuScreen() );
 	}
 	
 }

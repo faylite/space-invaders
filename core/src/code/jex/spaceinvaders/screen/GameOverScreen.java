@@ -50,9 +50,9 @@ public class GameOverScreen extends Screen
 		camera.update();
 		if(waitCounter > 50){
 			if ( MainGame.TOUCH() && Gdx.input.isTouched() ) {
-				ScreenManager.setScreen( new MainMenuScreen() );
+				ScreenManager.setScreen( new HighScoreScreen() );
 			} else if ( Gdx.input.isKeyPressed( Keys.ENTER ) ) {
-				ScreenManager.setScreen( new MainMenuScreen() );
+				ScreenManager.setScreen( new HighScoreScreen() );
 			}
 		}
 		waitCounter++;

@@ -14,7 +14,7 @@ public class Player extends Entity
 	public final int movementSpeed = 300;
 	
 	// Score
-	public static long score = 0;
+	public static int score = 0;
 	
 	protected String platform;
 	
@@ -25,6 +25,7 @@ public class Player extends Entity
 		
 		// Initialize
 		this.entityManager = entityManager;
+		score = 0;
 		inputHandler = new InputHandler(this , this.entityManager);
 		
 		platform = Gdx.app.getType().toString();
