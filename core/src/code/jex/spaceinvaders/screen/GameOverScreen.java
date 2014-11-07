@@ -15,8 +15,10 @@ public class GameOverScreen extends Screen
 	private OrthoCamera camera;
 	private Texture texture;
 	private BitmapFont font;
+	private BitmapFont font2;
 	
 	private String prompt;
+	private String gameOverMessage;
 	
 	private int waitCounter;
 	
@@ -28,6 +30,8 @@ public class GameOverScreen extends Screen
 	public void create()
 	{
 		font = new BitmapFont();
+		font2 = new BitmapFont();
+		font2.setScale( 2 );
 		camera = new OrthoCamera();
 		camera.resize();
 		
@@ -36,9 +40,10 @@ public class GameOverScreen extends Screen
 		} else {
 			prompt = "Press ENTER to restart";
 		}
+		gameOverMessage = "Game Over!";
+		
 		waitCounter = 0;
 	}
-	
 	@Override
 	public void update()
 	{
@@ -57,10 +62,10 @@ public class GameOverScreen extends Screen
 	{
 		sb.setProjectionMatrix( camera.combined );
 		sb.begin();
-		sb.draw( texture, MainGame.WIDTH / 2 - texture.getWidth() / 2, MainGame.HEIGHT / 2
-				- texture.getHeight() / 2 );
 		font.draw( sb, prompt, MainGame.WIDTH / 2 - font.getBounds( prompt ).width / 2,
 				MainGame.HEIGHT / 4 );
+		font2.draw( sb, gameOverMessage, MainGame.WIDTH / 2 - font2.getBounds( gameOverMessage ).width / 2,
+				MainGame.HEIGHT / 4 * 3 );
 		sb.end();
 	}
 	
@@ -71,14 +76,13 @@ public class GameOverScreen extends Screen
 	}
 	@Override
 	public void dispose()
-	{	
-		texture.dispose();
+	{
 		font.dispose();
 	}
 	
 	@Override
 	public void pause()
-	{	
+	{
 		
 	}
 	

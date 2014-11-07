@@ -24,8 +24,8 @@ public class GameScreen extends Screen
 		camera.resize();
 		entityManager = new EntityManager(40);
 		scoreFont = new BitmapFont();
-		scoreFont.setColor( Color.RED );
-		scoreFont.setScale( 1 );
+		scoreFont.setColor( Color.CYAN );
+		scoreFont.setScale( 2 );
 	}
 	
 	@Override
@@ -42,7 +42,7 @@ public class GameScreen extends Screen
 		sb.setProjectionMatrix( camera.combined );
 		sb.begin();
 		entityManager.render( sb );
-		scoreFont.draw( sb, "Kills: "+score, MainGame.WIDTH - scoreFont.getBounds( "Kills: "+Player.score ).width, MainGame.HEIGHT);
+		scoreFont.draw( sb, "Score: "+score, MainGame.WIDTH - scoreFont.getBounds( "Score: 1"+Player.score ).width, MainGame.HEIGHT);
 		sb.end();
 	}
 	
