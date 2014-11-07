@@ -27,8 +27,9 @@ public class EntityManager
 	
 	public EntityManager( int amount )
 	{
+		// Reset game over state
 		GAMEOVER = false;
-		addEntity(player = new Player( new Vector2( 220, 15 ), new Vector2( 0, 0 ), this ));
+		addEntity( player = new Player( new Vector2( 220, 15 ), new Vector2( 0, 0 ), this ) );
 		for ( int i = 0; i < amount; i++ ) {
 			float x = MathUtils.random( 0, MainGame.WIDTH - TextureManager.ENEMY.getWidth() );
 			float y = MathUtils.random( MainGame.HEIGHT, MainGame.HEIGHT * 2 );
@@ -41,13 +42,13 @@ public class EntityManager
 	
 	public void update()
 	{
-		if (getEnemies().size <= 30 && MainGame.INIFNITE_ENEMIES){
+		if ( getEnemies().size <= 30 && MainGame.INIFNITE_ENEMIES ) {
 			float x = MathUtils.random( 0, MainGame.WIDTH - TextureManager.ENEMY.getWidth() );
 			float y = MathUtils.random( MainGame.HEIGHT, MainGame.HEIGHT * 2 );
 			float speed = MathUtils.random( 2, 5 );
 			addEntity( new Enemy( new Vector2( x, y ), new Vector2( 0, -speed ) ) );
 		}
-		if(!GAMEOVER)
+		if ( !GAMEOVER )
 			player.update();
 		
 		// Render entities
@@ -60,7 +61,7 @@ public class EntityManager
 			}
 		}
 		for ( Explosion e:getExplosions() ) {
-			if (e.getFinished()){
+			if ( e.getFinished() ) {
 				entities.removeValue( e, false );
 			}
 		}
@@ -68,7 +69,7 @@ public class EntityManager
 		checkCollisions();
 		
 		// Game over renders
-		if (GAMEOVER) {
+		if ( GAMEOVER ) {
 			// Try to end game if wait time is over
 			gameOverWaitCounter++;
 			tryEndGame();
@@ -80,10 +81,11 @@ public class EntityManager
 		for ( Entity e:entities ) {
 			e.render( sb );
 		}
-		if (GAMEOVER){
+		if ( GAMEOVER ) {
 			int i = 0;
-			i = (int)gameOverMsg.getBounds( gameOverMsgStr ).width;
-			gameOverMsg.draw( sb, gameOverMsgStr , MainGame.WIDTH/2 - i/2 , MainGame.HEIGHT/4 * 3 );
+			i = (int) gameOverMsg.getBounds( gameOverMsgStr ).width;
+			gameOverMsg.draw( sb, gameOverMsgStr, MainGame.WIDTH / 2 - i / 2,
+					MainGame.HEIGHT / 4 * 3 );
 		}
 	}
 	
@@ -101,8 +103,9 @@ public class EntityManager
 					}
 				}
 			}
-			if ( e.getBounds().overlaps( player.getBounds() ) && !GAMEOVER && !MainGame.GOD_MODE) {
-				addEntity( new Explosion(new Vector2(player.pos.x , player.pos.y) , new Vector2(0,0)));
+			if ( e.getBounds().overlaps( player.getBounds() ) && !GAMEOVER && !MainGame.GOD_MODE ) {
+				addEntity( new Explosion( new Vector2( player.pos.x, player.pos.y ), new Vector2(
+						0, 0 ) ) );
 				entities.removeValue( player, true );
 				
 				endGame();
@@ -151,12 +154,14 @@ public class EntityManager
 	{
 		return getEnemies().size <= 0;
 	}
-	private void endGame(){
+	private void endGame()
+	{
 		GAMEOVER = true;
 		gameOverWaitCounter = 0;
 	}
-	private void tryEndGame(){
-		if (gameOverWaitCounter > 200){
+	private void tryEndGame()
+	{
+		if ( gameOverWaitCounter > 200 ) {
 			ScreenManager.setScreen( new HighScoreScreen() );
 		}
 	}

@@ -4,6 +4,7 @@ import code.jex.spaceinvaders.HighScoreManager;
 import code.jex.spaceinvaders.MainGame;
 import code.jex.spaceinvaders.camera.OrthoCamera;
 import code.jex.spaceinvaders.entity.Player;
+import code.jex.spaceinvaders.util.TextInputDialog;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -21,7 +22,6 @@ public class HighScoreScreen extends Screen
 	private BitmapFont newScore;
 	private BitmapFont scoresFont;
 	private BitmapFont promptFont;
-	
 	
 	private String newScoreMsg;
 	private String prompt;
@@ -50,15 +50,20 @@ public class HighScoreScreen extends Screen
 		promptFont = new BitmapFont();
 		promptFont.setScale( 2 );
 		
-		if ( MainGame.TOUCH())
+		if ( MainGame.TOUCH() )
 			prompt = "TOUCH screen to restart";
 		else
-			prompt = "Press ENTER to restart";
+			prompt = "Press SPACE to restart";
 		
 		newScoreMsg = "New Highscore!";
 		score = Player.score;
-		newHighScore = hsm.newHighScore(score);
+		newHighScore = hsm.newHighScore( score );
 		waitCounter = 0;
+		
+		if ( hsm.newHighScore( score ) ) {
+			TextInputDialog listener = new TextInputDialog();
+			Gdx.input.getTextInput( listener, "New highscore!", "Enter your name:" );
+		}
 	}
 	
 	@Override
@@ -68,7 +73,7 @@ public class HighScoreScreen extends Screen
 		if ( waitCounter > 50 ) {
 			if ( MainGame.TOUCH() && Gdx.input.isTouched() ) {
 				ScreenManager.setScreen( new MainMenuScreen() );
-			} else if ( Gdx.input.isKeyPressed( Keys.ENTER ) ) {
+			} else if ( Gdx.input.isKeyPressed( Keys.SPACE ) ) {
 				ScreenManager.setScreen( new MainMenuScreen() );
 			}
 		}
@@ -84,7 +89,7 @@ public class HighScoreScreen extends Screen
 				MainGame.WIDTH / 2 - scoreTable.getBounds( "High Scores:" ).width / 2,
 				MainGame.HEIGHT / 10 * 9 );
 		
-		if(newHighScore){
+		if ( newHighScore ) {
 			newScore.draw( sb, newScoreMsg, MainGame.WIDTH / 2
 					- newScore.getBounds( newScoreMsg ).width / 2, MainGame.HEIGHT / 10 * 8 );
 		}
@@ -95,7 +100,8 @@ public class HighScoreScreen extends Screen
 				- scoresFontWidth, MainGame.HEIGHT / 10 * 7, MainGame.WIDTH - scoresFontWidth / 4,
 				HAlignment.CENTER );
 		
-		promptFont.draw( sb, prompt, MainGame.WIDTH/2 - promptFont.getBounds( prompt ).width/2, MainGame.HEIGHT/10*2 );
+		promptFont.draw( sb, prompt, MainGame.WIDTH / 2 - promptFont.getBounds( prompt ).width / 2,
+				MainGame.HEIGHT / 10 * 2 );
 		sb.end();
 	}
 	

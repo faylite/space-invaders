@@ -1,5 +1,7 @@
-package code.jex.spaceinvaders;
+package code.jex.spaceinvaders.util;
 
+import code.jex.spaceinvaders.MainGame;
+import code.jex.spaceinvaders.TextureManager;
 import code.jex.spaceinvaders.entity.EntityManager;
 import code.jex.spaceinvaders.entity.Missile;
 import code.jex.spaceinvaders.entity.Player;
@@ -91,7 +93,7 @@ public class InputHandler
 	}
 	private void fireMissile()
 	{
-		if ( System.currentTimeMillis() - lastFire >= 250 ) {
+		if ( System.currentTimeMillis() - lastFire >= MainGame.FIRE_RATE ) {
 			entityManager.addEntity( new Missile( player.getPlayerPostion().cpy()
 					.add( ( 25 ), TextureManager.PLAYER.getHeight() ) ) );
 			lastFire = System.currentTimeMillis();

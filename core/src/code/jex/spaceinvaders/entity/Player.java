@@ -1,7 +1,7 @@
 package code.jex.spaceinvaders.entity;
 
-import code.jex.spaceinvaders.InputHandler;
 import code.jex.spaceinvaders.TextureManager;
+import code.jex.spaceinvaders.util.InputHandler;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
@@ -18,7 +18,6 @@ public class Player extends Entity
 	
 	protected String platform;
 	
-	
 	public Player( Vector2 pos, Vector2 direction, EntityManager entityManager )
 	{
 		super( TextureManager.PLAYER, pos, direction );
@@ -26,7 +25,7 @@ public class Player extends Entity
 		// Initialize
 		this.entityManager = entityManager;
 		score = 0;
-		inputHandler = new InputHandler(this , this.entityManager);
+		inputHandler = new InputHandler( this, this.entityManager );
 		
 		platform = Gdx.app.getType().toString();
 	}
@@ -38,7 +37,8 @@ public class Player extends Entity
 		
 		inputHandler.listenForInput();
 	}
-	public Vector2 getPlayerPostion(){
+	public Vector2 getPlayerPostion()
+	{
 		return this.pos;
 	}
 }
