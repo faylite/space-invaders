@@ -2,7 +2,7 @@ package code.jex.spaceinvaders.entity;
 
 import code.jex.spaceinvaders.MainGame;
 import code.jex.spaceinvaders.TextureManager;
-import code.jex.spaceinvaders.screen.GameOverScreen;
+import code.jex.spaceinvaders.screen.HighScoreScreen;
 import code.jex.spaceinvaders.screen.ScreenManager;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -18,7 +18,6 @@ public class EntityManager
 	private final Player player;
 	
 	// Game state
-	private boolean wonGame;
 	public static boolean GAMEOVER;
 	private float gameOverWaitCounter;
 	
@@ -98,7 +97,7 @@ public class EntityManager
 					entities.removeValue( e, false );
 					entities.removeValue( m, false );
 					if ( gameOver() ) {
-						endGame(true);
+						endGame();
 					}
 				}
 			}
@@ -106,7 +105,7 @@ public class EntityManager
 				addEntity( new Explosion(new Vector2(player.pos.x , player.pos.y) , new Vector2(0,0)));
 				entities.removeValue( player, true );
 				
-				endGame(false);
+				endGame();
 			}
 		}
 	}
@@ -152,14 +151,13 @@ public class EntityManager
 	{
 		return getEnemies().size <= 0;
 	}
-	private void endGame(boolean win){
-		wonGame = win;
+	private void endGame(){
 		GAMEOVER = true;
 		gameOverWaitCounter = 0;
 	}
 	private void tryEndGame(){
 		if (gameOverWaitCounter > 200){
-			ScreenManager.setScreen( new GameOverScreen() );
+			ScreenManager.setScreen( new HighScoreScreen() );
 		}
 	}
 }

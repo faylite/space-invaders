@@ -1,19 +1,16 @@
 package code.jex.spaceinvaders.screen;
 
 import code.jex.spaceinvaders.MainGame;
-import code.jex.spaceinvaders.TextureManager;
 import code.jex.spaceinvaders.camera.OrthoCamera;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameOverScreen extends Screen
 {
 	private OrthoCamera camera;
-	private Texture texture;
 	private BitmapFont font;
 	private BitmapFont font2;
 	

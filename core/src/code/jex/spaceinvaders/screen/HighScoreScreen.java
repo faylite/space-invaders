@@ -1,7 +1,5 @@
 package code.jex.spaceinvaders.screen;
 
-import java.util.ArrayList;
-
 import code.jex.spaceinvaders.HighScoreManager;
 import code.jex.spaceinvaders.MainGame;
 import code.jex.spaceinvaders.camera.OrthoCamera;
@@ -22,8 +20,11 @@ public class HighScoreScreen extends Screen
 	private BitmapFont scoreTable;
 	private BitmapFont newScore;
 	private BitmapFont scoresFont;
+	private BitmapFont promptFont;
+	
 	
 	private String newScoreMsg;
+	private String prompt;
 	
 	private int score;
 	private boolean newHighScore;
@@ -45,6 +46,14 @@ public class HighScoreScreen extends Screen
 		
 		scoresFont = new BitmapFont();
 		scoresFont.setScale( 1 );
+		
+		promptFont = new BitmapFont();
+		promptFont.setScale( 2 );
+		
+		if ( MainGame.TOUCH())
+			prompt = "TOUCH screen to restart";
+		else
+			prompt = "Press ENTER to restart";
 		
 		newScoreMsg = "New Highscore!";
 		score = Player.score;
@@ -83,8 +92,10 @@ public class HighScoreScreen extends Screen
 		float scoresFontWidth = scoresFont.getBounds( hsm.getHighScoreString() ).width / 2;
 		// Magic, don't touch!
 		scoresFont.drawMultiLine( sb, hsm.getHighScoreString(), MainGame.WIDTH / 2
-				- scoresFontWidth, MainGame.HEIGHT / 8 * 5, MainGame.WIDTH - scoresFontWidth / 4,
+				- scoresFontWidth, MainGame.HEIGHT / 10 * 7, MainGame.WIDTH - scoresFontWidth / 4,
 				HAlignment.CENTER );
+		
+		promptFont.draw( sb, prompt, MainGame.WIDTH/2 - promptFont.getBounds( prompt ).width/2, MainGame.HEIGHT/10*2 );
 		sb.end();
 	}
 	
