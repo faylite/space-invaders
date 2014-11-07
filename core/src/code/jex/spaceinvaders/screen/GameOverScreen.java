@@ -20,13 +20,9 @@ public class GameOverScreen extends Screen
 	
 	private int waitCounter;
 	
-	public GameOverScreen( boolean won )
+	public GameOverScreen(  )
 	{
-		if ( won ) {
-			texture = TextureManager.GAME_WON;
-		} else {
-			texture = TextureManager.GAME_OVER;
-		}
+		
 	}
 	@Override
 	public void create()

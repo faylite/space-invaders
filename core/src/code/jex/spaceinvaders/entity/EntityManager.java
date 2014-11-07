@@ -159,7 +159,7 @@ public class EntityManager
 	}
 	private void tryEndGame(){
 		if (gameOverWaitCounter > 200){
-			ScreenManager.setScreen( new GameOverScreen(wonGame) );
+			ScreenManager.setScreen( new GameOverScreen() );
 		}
 	}
 }
