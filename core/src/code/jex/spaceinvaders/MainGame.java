@@ -31,6 +31,7 @@ public class MainGame extends ApplicationAdapter
 	public void create()
 	{
 		batch = new SpriteBatch();
+		// ScreenManager.setScreen( new MainMenuScreen() );
 		ScreenManager.setScreen( new MainMenuScreen() );
 	}
 	@Override
