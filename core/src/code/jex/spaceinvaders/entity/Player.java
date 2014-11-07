@@ -1,7 +1,7 @@
 package code.jex.spaceinvaders.entity;
 
 import code.jex.spaceinvaders.TextureManager;
-import code.jex.spaceinvaders.util.InputHandler;
+import code.jex.spaceinvaders.util.KeyHandler;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 public class Player extends Entity
 {
 	private final EntityManager entityManager;
-	private final InputHandler inputHandler;
+	private final KeyHandler inputHandler;
 	
 	public final int movementSpeed = 300;
 	
@@ -25,7 +25,7 @@ public class Player extends Entity
 		// Initialize
 		this.entityManager = entityManager;
 		score = 0;
-		inputHandler = new InputHandler( this, this.entityManager );
+		inputHandler = new KeyHandler( this, this.entityManager );
 		
 		platform = Gdx.app.getType().toString();
 	}

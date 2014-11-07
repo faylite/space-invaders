@@ -9,7 +9,7 @@ import code.jex.spaceinvaders.entity.Player;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 
-public class InputHandler
+public class KeyHandler
 {
 	private Player player;
 	private EntityManager entityManager;
@@ -21,7 +21,7 @@ public class InputHandler
 	private long lastFire;
 	private int movementSpeed;
 	
-	public InputHandler( Player player, EntityManager entityManager )
+	public KeyHandler( Player player, EntityManager entityManager )
 	{
 		this.player = player;
 		this.entityManager = entityManager;
