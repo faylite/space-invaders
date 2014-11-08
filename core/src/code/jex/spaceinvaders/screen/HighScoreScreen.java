@@ -4,7 +4,6 @@ import code.jex.spaceinvaders.HighScoreManager;
 import code.jex.spaceinvaders.MainGame;
 import code.jex.spaceinvaders.camera.OrthoCamera;
 import code.jex.spaceinvaders.entity.Player;
-import code.jex.spaceinvaders.util.TextInputDialog;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;

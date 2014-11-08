@@ -2,7 +2,7 @@ package code.jex.spaceinvaders.util;
 
 import com.badlogic.gdx.Input.TextInputListener;
 
-public class TextInputDialog implements TextInputListener
+public class InputHandler implements TextInputListener
 {
 	
 	@Override
