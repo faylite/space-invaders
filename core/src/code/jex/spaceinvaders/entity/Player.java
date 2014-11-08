@@ -11,10 +11,10 @@ public class Player extends Entity
 	private final EntityManager entityManager;
 	private final KeyHandler inputHandler;
 	
-	public final int movementSpeed = 300;
-	
-	// Score
+	// Player info
 	public static int score = 0;
+	public static String NAME = "Player";
+	public final static int MOVEMENT_SPEED = 300;
 	
 	protected String platform;
 	
