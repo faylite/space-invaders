@@ -15,7 +15,7 @@ public class MainGame extends ApplicationAdapter
 	public static boolean MUSIC = true;
 	public static boolean INIFNITE_ENEMIES = true;// NOTE: True is now default.
 	public static boolean GOD_MODE = false;// OMG-Mode
-	public static int FIRE_RATE = 200;// Delay in milliseconds between shots.
+	public static int FIRE_RATE = 140;// Delay in milliseconds between shots.
 	
 	public static int ENEMIES = 50;
 	/*
