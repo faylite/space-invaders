@@ -29,7 +29,11 @@ public class EntityManager
 	{
 		// Reset game over state
 		GAMEOVER = false;
+		
+		// Add player to the entity array
 		addEntity( player = new Player( new Vector2( 220, 15 ), new Vector2( 0, 0 ), this ) );
+		
+		// Add set amount of enemies to the entity array at random position above screen
 		for ( int i = 0; i < MainGame.ENEMIES; i++ ) {
 			float x = MathUtils.random( 0, MainGame.WIDTH - TextureManager.ENEMY.getWidth() );
 			float y = MathUtils.random( MainGame.HEIGHT, MainGame.HEIGHT * 2 );
