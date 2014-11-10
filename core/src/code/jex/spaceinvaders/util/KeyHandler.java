@@ -26,7 +26,7 @@ public class KeyHandler
 		this.player = player;
 		this.entityManager = entityManager;
 		
-		this.movementSpeed = player.MOVEMENT_SPEED;
+		this.movementSpeed = Player.MOVEMENT_SPEED;
 	}
 	
 	public void listenForInput()
