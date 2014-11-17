@@ -58,6 +58,7 @@ nb-configuration.xml
 
 .gradle
 build/
+local.properties
 
 ## OS Specific
 .DS_Store
