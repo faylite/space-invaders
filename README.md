@@ -2,18 +2,18 @@
 This is an old Space Invaders clone I had laying around, the purpose of the game was to learn about libgdx and is no longer under active development, feel free to create pull requests though.
 
 # Building
-This game uses libgdx and gradle see the libgdx wiki for more info
+This game uses libgdx and gradle see the [libgdx wiki](https://github.com/libgdx/libgdx/wiki/Project-Setup-Gradle) for more info
 
-To run the desktop project simply use the included gradlew
+To run the desktop project simply use the included gradlew,
+the gradlew.bat for windows or gradlew for osx/linux.
 
-Linux: 
->./gradlew desktop:run
+###Desktop Project 
+>gradlew desktop:run
 
-Windows: 
->gradlew.bat desktop:run
+###Android Project
+>gradlew gradlew android:installDebug android:run
 
-More info:
-https://github.com/libgdx/libgdx/wiki/Gradle-on-the-Commandline
+[More info](https://github.com/libgdx/libgdx/wiki/Gradle-on-the-Commandline)
 
 #Legal
 This project is licensed under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html)
