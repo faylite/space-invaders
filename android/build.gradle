@@ -1,5 +1,5 @@
 android {
-    buildToolsVersion "21.0.2"
+    buildToolsVersion "21.1.2"
     compileSdkVersion 21
     sourceSets {
         main {
@@ -63,7 +63,7 @@ task run(type: Exec) {
     }
 
     def adb = path + "/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'tut.baseball435.spaceinvaders.android/tut.baseball435.spaceinvaders.android.AndroidLauncher'
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'code.jex.spaceinvaders.android/code.jex.spaceinvaders.android.AndroidLauncher'
 }
 
 // sets up the Android Eclipse project, using the old Ant based build.
