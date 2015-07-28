@@ -7,13 +7,16 @@ This game uses libgdx and gradle see the libgdx wiki for more info
 To run the desktop project simply use the included gradlew
 
 Linux: 
-./gradlew desktop:run
+>./gradlew desktop:run
 
 Windows: 
-gradlew.bat desktop:run
+>gradlew.bat desktop:run
 
 More info:
 https://github.com/libgdx/libgdx/wiki/Gradle-on-the-Commandline
+
+#Legal
+This project is licensed under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 #Disclaimer
 The graphics in this game does not belong to me, and was purely used for educational purposes.
