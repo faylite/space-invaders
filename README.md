@@ -14,3 +14,8 @@ gradlew.bat desktop:run
 
 More info:
 https://github.com/libgdx/libgdx/wiki/Gradle-on-the-Commandline
+
+#Disclaimer
+The graphics in this game does not belong to me, and was purely used for educational purposes.
+
+Copyright Disclaimer under section 107 of the Copyright Act 1976, allowance is made for “fair use” for purposes such as criticism, comment, news reporting, teaching, scholarship, education and research.
